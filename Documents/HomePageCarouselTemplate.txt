@@ -1,0 +1,63 @@
+<#assign liferay_ui = taglibLiferayHash["/META-INF/liferay-ui.tld"] />
+	<style>
+	html,h2,h4,p{
+	   font-family:helvetica; 
+	   
+	}
+	.btnPlacement{
+	  padding-left:265px;
+	}
+	.descriptionPlacement{
+	  padding-top:145px;
+	  color:white;
+	  font-size:11px;
+	/*  margin-top:-15px;*/
+	  margin-bottom:0px;
+	}
+	.divider1{
+	  height:220px
+	}
+	 </style>
+<div class="container">
+  <h2 style="margin-left:65px;">Benchmarking Projects</h2>
+  <br>
+</div>
+<div id="demo" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<#list entries as entry>
+			<#if entry?counter %3 == 0>
+				<#assign closureDiv = entry?counter/>
+				<#assign carouselDiv = entry?counter + 1?number/>
+			</#if>
+			<#if entry?counter == 1?number>
+				<div class="carousel-item active" style="padding-left:90px;padding-right:120px">
+				<div class="card-columns">
+			</#if>
+			<#if carouselDiv??>
+				<#if carouselDiv?number == entry?counter>
+				<div class="carousel-item" style="padding-left:90px;padding-right:120px">
+				<div class="card-columns">
+				</#if>
+			</#if>
+			<#assign assetRenderer = entry.getAssetRenderer()/>
+				<@liferay_ui["asset-display"]
+					assetEntry=entry
+					assetRenderer=assetRenderer
+					showExtraInfo=false />
+			<#if closureDiv??>
+				<#if closureDiv?number == entry?counter>
+					</div>
+					</div>
+				</#if>
+			</#if>
+		</#list>   
+	</div>
+</div>
+<!-- Left and right controls -->
+	  <a class="carousel-control-prev" href="#demo" style="margin-left:160px;height:50px;margin-top:170px;" data-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	  </a>
+	  <a class="carousel-control-next" href="#demo" style="right:40px;height:50px;margin-top:170px" data-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	  </a>
+</div>

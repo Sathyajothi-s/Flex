@@ -1,0 +1,12 @@
+<div class="card img-fluid">
+  <#if ProjectBgImg.getData()?? && ProjectBgImg.getData() != ""> <img alt="${ProjectBgImg.getAttribute("alt")}" data-fileentryid="${ProjectBgImg.getAttribute("fileEntryId")}" src="${ProjectBgImg.getData()}" style="height:273px; width:100%"/> </#if>
+    <div class="card-img-overlay">
+	<div class="divider1">
+      <h3 style="color:white">${ProjectName.getData()}</h3>
+      <p class="card-text descriptionPlacement">${ProjectDescription.getData()}</p>
+	  </div>
+	  <div class="btnPlacement">
+      <a href="${FriendlyURL.getData()}" class="btn btn-primary" style="padding:2px 5px">View</a>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<#assign liferay_ui = taglibLiferayHash["/META-INF/liferay-ui.tld"] />
+
+<#list entries as entry>
+
+<#assign assetRenderer = entry.getAssetRenderer()/>
+				<@liferay_ui["asset-display"]
+					assetEntry=entry
+					assetRenderer=assetRenderer
+					showExtraInfo=false />
+</#list> 

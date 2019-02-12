@@ -1,0 +1,77 @@
+<style>
+h2,h4,p{
+   font-family:helvetica; 
+  }
+    .dividerTop{
+  height:40px;
+  }
+    .btnPlacement{
+  float:right;
+  }
+  .logoCentered{
+    position:absolute;
+    width:90%;
+    height:100%;
+    text-align: center;
+	}
+.card{
+    width:90%;
+    margin-left:5%;
+}
+</style>
+
+<#assign currentURL = themeDisplay.getURLCurrent()/>
+<#if currentURL?substring(1)?split("/")?size == 3>
+<div class="card">
+    <div class="card-body">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="logoCentered">
+					<#if UnitImage.getData()?? && UnitImage.getData() != "">
+						<img class="card-img-top" alt="${UnitImage.getAttribute("alt")}" data-fileentryid="${UnitImage.getAttribute("fileEntryId")}" 
+						src="${UnitImage.getData()}" style="width:50%" />
+					</#if>
+				</div>	
+			</div>
+			<div class="col-md-9" style="border-left:1px solid rgba(0,0,0,.125)">	
+					<h4 style="margin-bottom:15px">${UnitName.getData()}</h4>
+					<p style="font-size:15px;margin-bottom:6px">${UnitDescription.getData()}</p>
+					<div class="btnPlacement">
+						<button class="btn btn-primary" style="padding:2px 5px"><a href="${UnitDescription.FriendlyURL.getData()}" style="color:white;text-decoration:none">View</a></button>
+					</div>
+			</div>
+		</div>	
+	</div>
+</div>
+<#elseif currentURL?substring(1)?split("/")?size == 4>
+    <div class="container">
+	<div class="card">
+		<div class="card-body">
+			<h4>Tear Down Images</h4><br>
+			<#if TearDownImages.getData()?? && TearDownImages.getData() != ""> <img alt="${TearDownImages.getAttribute("alt")}" data-fileentryid="${TearDownImages.getAttribute("fileEntryId")}" src="${TearDownImages.getData()}" style="margin-left:7%" /> </#if>
+		</div>
+	</div><br>
+	<div class="card">
+		<div class="card-body">
+		<h4>Functional Block Diagram</h4><br>
+		<#if FunctionalBlockDiagram.getData()?? && FunctionalBlockDiagram.getData() != ""> <img alt="${FunctionalBlockDiagram.getAttribute("alt")}" data-fileentryid="${FunctionalBlockDiagram.getAttribute("fileEntryId")}" src="${FunctionalBlockDiagram.getData()}" style="margin-left:14%"  /> </#if>
+		</div>
+	</div>
+  <br>
+  <div class="card">
+    <div class="card-body">
+		<h4>Component Marking</h4><br>
+		<div class="card row">
+		<#if ComponentMarking1.getData()?? && ComponentMarking1.getData() != ""> <img alt="${ComponentMarking1.getAttribute("alt")}" data-fileentryid="${ComponentMarking1.getAttribute("fileEntryId")}" src="${ComponentMarking1.getData()}" /> </#if>
+		<div class="divider6"></div>
+		</div><br>
+		<div class="card row">
+		<#if ComponentMarking2.getData()?? && ComponentMarking2.getData() != ""> <img alt="${ComponentMarking2.getAttribute("alt")}" data-fileentryid="${ComponentMarking2.getAttribute("fileEntryId")}" src="${ComponentMarking2.getData()}" /> </#if>
+		<div class="divider6"></div>
+		</div><br>
+		<div class="card row">
+		<#if ComponentMarking3.getData()?? && ComponentMarking3.getData() != ""> <img alt="${ComponentMarking3.getAttribute("alt")}" data-fileentryid="${ComponentMarking3.getAttribute("fileEntryId")}" src="${ComponentMarking3.getData()}" /> </#if>
+		<div class="divider6"></div>
+		</div>
+</div></div></div>
+</#if>
